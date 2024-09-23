@@ -1,22 +1,15 @@
 import pyperclip
+import argparse
 
-# Ask the user what counter they want to start at
-while True:
-    start_counter = input("Please enter the counter you want to start at: ")
-    try:
-        start_counter = int(start_counter)
-        break
-    except ValueError:
-        print("Please enter a valid integer.")
+# Set up command-line argument parsing
+parser = argparse.ArgumentParser(description="Generate a :thumbsup: emoji spam string.")
+parser.add_argument("-s", "--start_counter", default=1, type=int, help="The counter to start at")
+parser.add_argument("-c", "--count", default=199, type=int, help="The number of times you wish to spam the :thumbsup: emoji")
 
-# Ask the user how many times they want to spam :thumbsup:
-while True:
-    count = input("Please enter the number of times you wish to spam the :thumbsup: emoji: ")
-    try:
-        count = int(count)
-        break
-    except ValueError:
-        print("Please enter a valid integer.")
+args = parser.parse_args()
+
+start_counter = args.start_counter
+count = min(args.count, 199)  # Limit to 199 emojis
 
 # Generate the spam string
 spam_messages = [f"👍 X{i}" for i in range(start_counter, start_counter + count)]

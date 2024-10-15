@@ -13,8 +13,6 @@ start_counter = args.start_counter
 use_unicode = args.unicode
 count = min(args.count, 198 if use_unicode else 199)  # Limit to 199 emojis if normal and 198 if unicode
 
-print(use_unicode)
-
 # Generate the spam string with or without superscripted counter
 if use_unicode:
     # Unicode superscripts for numbers 0-9
